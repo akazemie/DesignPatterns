@@ -2,20 +2,16 @@
 {
     public class History
     {
-        private List<EditorState> states = new();
+        private Stack<EditorState> mementos = new();
 
-        public void push(EditorState state)
+        public void push(EditorState memento)
         {
-            states.Add(state);
+            mementos.Push(memento);
         }
 
         public EditorState pop()
         {
-            var lastIndex = states.Count() - 1;
-            var lastState = states[lastIndex];
-            states.Remove(lastState);
-
-            return lastState;
+            return mementos.Pop();
         }
     }
 }
